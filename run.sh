@@ -1,10 +1,16 @@
 #!/bin/sh
 
-# build image // use --rm to delete intermediaire container
-docker build -f Dockerfile -t test .
-# build container and start service apache2    service apache2 start
-docker run --name="apache" -d -p 8080:80 -t test 
-docker ps -a
+# build image
+docker build --force-rm=true -t image-runit .
+#
 
+# build container
+docker run -p 8080:80 --name="runit" -d -t image-runit 
+# display all running containers
+docker ps
 # rejoin a container
-# docker exec -i -t apache bash
+#docker exec -i -t runit bash
+
+# if container already exists, start and rejoin the container
+#docker start --interactive=false --attach=false runit
+#docker exec -i -t runit bash
