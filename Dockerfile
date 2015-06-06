@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 FROM phusion/baseimage:latest
 
-RUN apt-get install -y apache2 
-=======
-FROM ubuntu:14.04
+#RUN apt-get update ; apt-get install -y apache2
 
-RUN apt-get update
-RUN apt-get install -y apache2
 
-EXPOSE 80
+RUN mkdir /etc/sv/test ; mkdir -p /opt/test/logs ; adduser --system --no-create-home foo
+COPY ./conf/etc/sv/test /etc/sv/test
+COPY ./conf/test.sh /opt/test/test.sh
+RUN chown -R foo:foo /opt/test
 
-ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
->>>>>>> e7442bf22b379ff13e7481e10a66542468a73d64
+RUN cd /etc/service/ ; ln -s /etc/sv/test test
+
+RUN sv start test

@@ -3,7 +3,7 @@
 # build image // use --rm to delete intermediaire container
 docker build --force-rm=true -f Dockerfile -t apache2 .
 # build container and start service apache2    service apache2 start
-docker run --name="server_apache" -d -p 8080:80 apache2
+docker run --name="server_apache" -d -p 8080:80 -t apache2
 docker ps -a
 
 # if container already exists, start and rejoin the container
