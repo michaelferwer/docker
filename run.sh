@@ -8,4 +8,4 @@ docker ps -a
 
 # if container already exists, start and rejoin the container
 #docker start --interactive=false --attach=false server_apache
-docker exec -i -t server_apache bash
+#docker exec -i -t server_apache bash
