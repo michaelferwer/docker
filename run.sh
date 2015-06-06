@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker rm server_apache
+docker rm -f server_apache
 docker rmi apache2
 
 # build image // use --rm to delete intermediaire container
