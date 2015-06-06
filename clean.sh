@@ -1,7 +1,7 @@
 #!/bin/sh
 
-docker stop apache
-docker rm apache
-docker rmi test
+docker stop runit
+docker rm runit
+docker rmi image-runit
 docker ps -a
 docker images
